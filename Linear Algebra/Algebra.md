@@ -1,3 +1,22 @@
+# Notation
+
+Matrices:
+- $\mathbf{A} \in \mathbb{R}^{n \times m}$
+
+    - Element: $a_{ij} \in \mathbb{R}$ where $i=1,...,n$ and $j=1,...,m$
+
+    - Columns: $\mathbf{a}_{\cdot j} \in \mathbb{R}^{n \times 1}$
+
+    - Rows: $\mathbf{a}_{i \cdot} \in \mathbb{R}^{m \times 1}$
+
+$$
+\mathbf{A} =
+[\mathbf{a}_{\cdot 1} | \cdots | \mathbf{a}_{\cdot m}] = 
+\begin{bmatrix} \mathbf{a}_{1 \cdot}^\top \\ \vdots \\ \mathbf{a}_{n \cdot}^\top \end{bmatrix} =
+[a_{ij}]
+$$
+
+- $\mathbf{B} \in \mathbb{R}^{m \times p}$
 
 # Dot Product
 
@@ -122,12 +141,15 @@ Where:
 
 $$
 \mathbf{C} =
+
 \begin{bmatrix}
     \mathbf{a}_1^\top \mathbf{B} \\
     \vdots \\
     \mathbf{a}_n^\top \mathbf{B}
 \end{bmatrix} = 
+
 [\mathbf{A} \mathbf{b}_1,\cdots,\mathbf{A} \mathbf{b}_p] =
+
 \begin{bmatrix}
 \mathbf{a}_1^T \mathbf{b}_1 & \mathbf{a}_1^T \mathbf{b}_2 & \cdots & \mathbf{a}_1^T \mathbf{b}_p \\
 \mathbf{a}_2^T \mathbf{b}_1 & \mathbf{a}_2^T \mathbf{b}_2 & \cdots & \mathbf{a}_2^T \mathbf{b}_p \\
@@ -146,18 +168,23 @@ Equivalently:
 
 
 $$
-C = AB = \begin{bmatrix}
+C = 
+
+AB = 
+
+\begin{bmatrix}
 | & | & & | \\
 \mathbf{a}_1 & \mathbf{a}_1 & \cdots & \mathbf{a}_m \\
 | & | & & |
 \end{bmatrix}
 \begin{bmatrix}
--- & \mathbf{b}_1^T & -- \\
--- & \mathbf{b}_2^T & -- \\
+- & \mathbf{b}_1^T & - \\
+- & \mathbf{b}_2^T & - \\
 & \vdots & \\
--- & \mathbf{b}_m^T & --
-\end{bmatrix}
-= \sum_{j=1}^m \mathbf{a}_j \mathbf{b}_j^T
+- & \mathbf{b}_m^T & -
+\end{bmatrix} = 
+
+\sum_{j=1}^m \mathbf{a}_j \mathbf{b}_j^T
 $$
 
 Source: CS224N Linear Algebra Review handout
@@ -178,34 +205,21 @@ $$
 \end{bmatrix}
 $$
 
-# Linear Models
+# Kronecker Product
 
-## Factor Models
+The Kronecker product of an $m \times n$ matrix $Q$ and an $r \times s$ matrix P is an $mr \times ns$ matrix, $Q \otimes P$ defined as
 
-Assume:
+$$
+Q \otimes P = \begin{bmatrix}
+  Q_{11} P & Q_{12} P & \cdots & Q_{1n} P \\
+  Q_{21} P & Q_{22} P & \cdots & Q_{2n} P \\
+  \vdots          & \vdots          & \ddots & \vdots          \\
+  Q_{m1} P & Q_{q2} P & \cdots & Q_{mn} P
+\end{bmatrix}
+$$
 
-- Let $\mathbf{x}_i \in \mathbb{R}^{p \times 1}$ represent row $i$ of matrix $\mathbf{X} \in \mathbb{R}^{n \times p}$
-    - $i=1,...,n$
-    - $j=1,...,p$
-
-- $\mathbf{f}_i \in \mathbb{R}^{q \times 1}$ represent factors for observation $i$.
-    - $r = 1,...,q$
-
-- $\mathbf{F} \in \mathbb{R}^{n \times q}$ (the factors for all $n$ observations)
-
-- $\mathbf{W} \in \mathbb{R}^{p \times q}$ represent a matrix of weights. 
-    - $W_{jr}$ describes how strongly the $r$-th factor influences the $j$-th observed feature.
-
-- $\boldsymbol{\epsilon}_i \in \mathbb{R}^{p \times 1}$ is the noise term for observation $i$
-
-- $\mathbf{E} \in \mathbb{R}^{n \times p}$
-
-Then the following are all equivalent expressions of the same model:
-
-- $\mathbf{x}_i = \mathbf{W} \mathbf{f}_i + \boldsymbol{\epsilon}_i$
-- $\mathbf{X} = \mathbf{F} \mathbf{W}^T + \mathbf{E}$
-- $\mathbf{x}_i^\top = \mathbf{f}_i^\top \mathbf{W}^\top + \boldsymbol{\epsilon}_i^\top$
-- $\mathbf{X}^\top = \mathbf{W} \mathbf{F}^\top + \mathbf{E}^T$
+Properties:
+* $(A \otimes B)' = A' \otimes B'$
 
 # Sources
 

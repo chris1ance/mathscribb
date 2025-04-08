@@ -54,6 +54,12 @@ $$\boldsymbol{\Sigma}^{-1}_{z|1} = \boldsymbol{\Sigma}^{-1}_z + \mathbf{W}^{\top
 
 $$\boldsymbol{\mu}_{z|1} = \boldsymbol{\Sigma}_{z|1}[\mathbf{W}^{\top}_1\boldsymbol{\Sigma}^{-1}_{11} (\mathbf{y}_1 - \mathbf{b}_1) + \boldsymbol{\Sigma}^{-1}_z\boldsymbol{\mu}_z]$$
 
+# Matrix Normal Distribution
+
+The random matrix $\mathbf{X} \in \mathbb{R}^{n \times p}$ a matrix normal distribution $MN_{n,p}(M,U,V)$ iff 
+
+$$vec(X) \sim N_{np}(vec(M),V \otimes U)$$
+
 # References
 
 - Kevin P. Murphy. "Probabilistic Machine Learning: An Introduction." Chapter 3, Section 3.
