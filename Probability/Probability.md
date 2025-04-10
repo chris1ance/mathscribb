@@ -1,3 +1,17 @@
+# Notation
+
+* $P(A)$: The probability of some event $A$ occuring
+
+* $p_X(x) \equiv p(x) \equiv P(X = x)$: The PMF of a discrete rv $X$
+
+* $f_X(x) \equiv f(x)$: The PDF of a continuous rv $X$
+
+* $p(x)$: When referring to a random variable $X$ that can be either discrete or continuous, $p(x)$ is a useful shorthand to denote the PMF of $X$ if $X$ is discrete, or the PDF if $X$ is continuous.
+
+* $\theta$: The parameters of the distribution of $X$. For example, if $X \sim N(\mu,\sigma^2)$, then $\theta = (\mu,\sigma^2)$
+
+* $p_{\theta}(x) \equiv p(x|\theta) \equiv p(x;\theta)$: When referring to a random variable $X$ that can be either discrete or continuous, $p_{\theta}(x)$ is a useful shorthand to denote the PMF of $X$ if $X$ is discrete, or the PDF if $X$ is continuous.
+
 
 # Sample Space
 
@@ -199,3 +213,34 @@ $$
 P(A) = \int_{B} P(A \mid Y=y) f_Y(y) \, dy
 $$
 
+# Expectation
+
+## Discrete
+
+The expectation, or expected value, of some function $g()$ of a discrete random variable $X \sim p$ is defined as
+
+$$ \mathbb{E}_{X \sim p}[g(x)] = \sum_{x \in \mathcal{X}} g(x)P(X = x) $$
+
+## Continuous
+
+The expectation, or expected value, of some function $g()$ of a continuous random variable $X \sim f$ is defined as
+
+$$ \mathbb{E}_{X \sim f}[g(x)] = \int g(x)f(x) dx $$
+
+# Marginal Distribution
+
+## Discrete
+
+Suppose two discrete random variables $(X,Y)$ have joint PMF $p_{X,Y}(x,y)$. 
+
+Then the marginal distribution of $X$ is the PMF $p_X(x)$, which is equal to:
+
+$$ p_{X,Y}(x,y) = \sum_{y \in \mathcal{Y}} p_{X,Y}(X=x,Y=y) $$
+
+## Continuous
+
+Suppose two continuous random variables $(X,Y)$ have joint PDF $f_{X,Y}(x,y)$. 
+
+Then the marginal distribution of $X$ is the PDF $f_X(x)$, which is equal to:
+
+$$ f_X(x) = \int  f_{X,Y}(x,y) dy$$
